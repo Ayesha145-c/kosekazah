@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <!-- Fontawesome Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons/css/boxicons.min.css">
+    <link rel="stylesheet" href="css/style0.css">
+    <style>
+        body{
+            background: linear-gradient(#F8BBD0, #F7E7CE);
+        }
+    </style>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+      <img style="width: 70px;" src="قوس قزحLOGO.png" alt="">
+      <input type="checkbox" id="menu-toggler">
+      <label style="top: 100px;" for="menu-toggler" id="hamburger-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+              <path d="M0 0h24v24H0z" fill="none"/>
+              <path d="M3 18h18v-2H3v2zm0-5h18V11H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+      </label>
+      <ul class="all-links">
+          <li><a href="lolhaha.html">Home</a></li>
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+      </ul>
+      <!-- Cart Icon -->
+      <div id="cart-icon" onclick="toggleCart()">
+          <span id="cart-count">0</span>
+          <i class="bx bx-cart"></i>
+      </div>
+      <div class="cart-modal" id="cart-modal">
+          <div>
+              <h1 style="text-align: center;">Your Cart</h1>
+          </div>
+          <div class="cart-content" id="cart-content">
+              <!-- Cart items will be dynamically added here -->
+          </div>
+          <div class="cart-footer">
+              <span class="total">Total: <span id="cart-total">0 Rs</span></span>
+              <button class="btn-checkout">Checkout</button>
+              <button class="btn-close" onclick="closeCart()">Close</button>
+          </div>
+      </div>
+  </nav>
+</header>
+<br><br>
+<section>
+  <h1 style="text-align: center;">Eye Makeup</h1>
+  <!-- Products -->
+  <div class="product-container">
+      <div class="product" data-id="1" data-name="KMES Waterproof Mascara" data-price="110" data-image="08079c37-9bb2-4016-8a11-27a6c73682d9.jpeg">
+          <img src="08079c37-9bb2-4016-8a11-27a6c73682d9.jpeg" alt="KMES Waterproof Mascara">
+          <h3>KMES Waterproof Mascara</h3>
+          <br>
+          <p>Price: 110 Rs</p>
+          <br>
+          <p>Introducing KMES Waterproof Mascara, your ultimate choice for bold, long-lasting lashes. This mascara offers smudge-proof and waterproof performance, ensuring your lashes stay voluminous and defined all day.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="2" data-name="Lareen Eyeliner" data-price="138" data-image="c41ec81c-b279-4931-85ff-50ee0ed9d400.jpeg">
+          <img src="c41ec81c-b279-4931-85ff-50ee0ed9d400.jpeg" alt="Lareen Eyeliner">
+          <h3>Lareen Eyeliner</h3>
+          <br>
+          <p>Price: 138 Rs</p>
+          <br>
+          <p>Introducing LAREEN Eyeliner, your go-to for precise and long-lasting eye definition. This eyeliner glides on smoothly, delivering intense color with a matte finish.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      
+       <div class="product" data-id="19" data-name="LAREEN love Be Mine Baby Eyeshadow Palette" data-price="900" data-image="c1d60fa3-a965-423c-8684-603e77a4f6e6.jpeg">
+          <img src="c1d60fa3-a965-423c-8684-603e77a4f6e6.jpeg" alt="LAREEN love Be Mine Baby Eyeshadow Palette">
+          <h3>LAREEN love Be Mine Baby Eyeshadow Palette</h3>
+          <br>
+          <p>Price: 900 Rs</p>
+          <br>
+          <p>This palette features a range of velvety matte and shimmering shades that blend effortlessly for seamless application. Perfect for creating both subtle and bold makeup looks.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="21" data-name="Yameiyan ya Eyeshadow Palette" data-price="1500" data-image="WhatsApp Image 2024-07-25 at 7.20.23 AM.jpeg">
+          <img src="WhatsApp Image 2024-07-25 at 7.20.23 AM.jpeg" alt="Yameiyan ya Eyeshadow Palette">
+          <h3>Yameiyan ya Eyeshadow Palette</h3>
+          <br>
+          <p>Price: 1500 Rs</p>
+          <br>
+          <p>With a range of highly pigmented shades from neutral mattes to shimmering metallics, this palette offers endless possibilities. The blendable formula ensures seamless application making it perfect for any occasion.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="22" data-name="One Fresa KissCrown Eyeshadow Palette" data-price="900" data-image="a1a4996f-900e-4d23-875a-8bb0518ae8cc.jpeg">
+          <img src="a1a4996f-900e-4d23-875a-8bb0518ae8cc.jpeg" alt="One Fresa KissCrown Eyeshadow Palette">
+          <h3>One Fresa KissCrown Eyeshadow Palette</h3>
+          <br>
+          <p>Price: 900 Rs</p>
+          <br>
+          <p>This palette features a versatile array of shades ranging from soft neutrals to bold pops of color, allowing you to create endless eye makeup looks. This palette ensures smooth application and long-lasting wear.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="23" data-name="My beautiful Unicorn Eyeshadow Palette" data-price="1500" data-image="okayy.png">
+          <img src="okayy.png" alt="My beautiful Unicorn Eyeshadow Palette">
+          <h3>My beautiful Unicorn Eyeshadow Palette</h3>
+          <br>
+          <p>Price: 1500 Rs</p>
+          <br>
+          <p>With its richly pigmented and blendable formula, it ensures effortless application and long-lasting vibrancy. Elevate your makeup routine with this palette, perfect for expressing your inner unicorn-inspired beauty.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="24" data-name="Dito Persephone Eyeshadow Palette" data-price="7000" data-image="dito.jpeg">
+          <img src="dito.jpeg" alt="Dito Persephone Eyeshadow Palette">
+          <h3>Dito Persephone Eyeshadow Palette</h3>
+          <br>
+          <p>Price: 7000 Rs</p>
+          <br>
+          <p>This palette features a range of richly pigmented shades, from earthy neutrals to vibrant hues, perfect for creating endless eye looks. With a blendable and long-lasting formula, it offers versatility and sophistication for every occasion.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+     
+
+  </div>
+</div>
+
+</section>
+<br><br>
+<footer>
+  <div>
+      <span>Copyright © 2024 All Rights Reserved</span>
+  </div>
+</footer>
+
+<script>
+    document.querySelector('.btn-checkout').addEventListener('click', () => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'CHECKOUT.html'; // Redirect to checkout page
+});
+   const cart = [];
+const cartContent = document.getElementById('cart-content');
+const cartTotal = document.getElementById('cart-total');
+const cartCount = document.getElementById('cart-count');
+
+function updateCart() {
+    cartContent.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.dataset.id = item.id;
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+            <span>${item.name} - ${item.price} Rs</span>
+            <input type="number" class="cart-item-quantity" value="${item.quantity}" min="1" 
+                   onchange="updateQuantity(${item.id}, this.value)">
+            <span> ${item.price * item.quantity} Rs</span>
+            <i class='bx bxs-trash' onclick="removeFromCart(${item.id})"></i>
+        `;
+        cartContent.appendChild(cartItem);
+        total += item.price * item.quantity;
+    });
+
+    cartTotal.textContent = `${total} Rs`;
+    cartCount.textContent = cart.length;
+}
+
+function addToCart(product) {
+    const existingItem = cart.find(item => item.id === product.id);
+
+    if (existingItem) {
+        existingItem.quantity += product.quantity;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            quantity: product.quantity,
+            image: product.image
+        });
+    }
+
+    updateCart();
+}
+
+function removeFromCart(id) {
+    const itemIndex = cart.findIndex(item => item.id === id);
+
+    if (itemIndex > -1) {
+        cart.splice(itemIndex, 1);
+        updateCart();
+    }
+}
+
+function updateQuantity(id, quantity) {
+    const item = cart.find(item => item.id === id);
+
+    if (item) {
+        item.quantity = parseInt(quantity) || 1;
+        updateCart();
+    }
+}
+
+function toggleCart() {
+    const cartModal = document.getElementById('cart-modal');
+    cartModal.style.display = cartModal.style.display === 'block' ? 'none' : 'block';
+}
+
+function closeCart() {
+    document.getElementById('cart-modal').style.display = 'none';
+}
+
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', () => {
+        const productElement = button.parentElement;
+        const product = {
+            id: parseInt(productElement.dataset.id),
+            name: productElement.dataset.name,
+            price: parseInt(productElement.dataset.price),
+            quantity: 1, // Default quantity is set to 1
+            image: productElement.dataset.image
+        };
+        addToCart(product);
+    });
+});
+</script>
+</body>
+</html>

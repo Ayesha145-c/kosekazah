@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <!-- Fontawesome Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons/css/boxicons.min.css">
+    <link rel="stylesheet" href="css/style0.css">
+    <style>
+        body{
+            background: linear-gradient(#F8BBD0, #F7E7CE);
+        }
+    </style>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+      <img style="width: 70px;" src="قوس قزحLOGO.png" alt="">
+      <input type="checkbox" id="menu-toggler">
+      <label style="top: 100px;" for="menu-toggler" id="hamburger-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+              <path d="M0 0h24v24H0z" fill="none"/>
+              <path d="M3 18h18v-2H3v2zm0-5h18V11H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+      </label>
+      <ul class="all-links">
+          <li><a href="lolhaha.html">Home</a></li>
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+      </ul>
+      <!-- Cart Icon -->
+      <div id="cart-icon" onclick="toggleCart()">
+          <span id="cart-count">0</span>
+          <i class="bx bx-cart"></i>
+      </div>
+      <div class="cart-modal" id="cart-modal">
+          <div>
+              <h1 style="text-align: center;">Your Cart</h1>
+          </div>
+          <div class="cart-content" id="cart-content">
+              <!-- Cart items will be dynamically added here -->
+          </div>
+          <div class="cart-footer">
+              <span class="total">Total: <span id="cart-total">0 Rs</span></span>
+              <button class="btn-checkout">Checkout</button>
+              <button class="btn-close" onclick="closeCart()">Close</button>
+          </div>
+      </div>
+  </nav>
+</header>
+<br><br>
+<section>
+  <h1 style="text-align: center;">Perfumes</h1>
+  <!-- Products -->
+  <div class="product-container">
+      
+      <div class="product" data-id="25" data-name="Bamboo Gold Perfume" data-price="2000" data-image="okayy.png">
+          <img src="okayy.png" alt="Bamboo Gold Perfume">
+          <h3>Bamboo Gold Perfume</h3>
+          <br>
+          <p>Price: 2000 Rs</p>
+          <br>
+          <p>Embrace a touch of elegance with every spritz. This captivating fragrance blends the freshness of bamboo with golden notes of warmth and sophistication, creating a scent that's both invigorating and timelessly luxurious.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="28" data-name="DATE Obsession Body Spray" data-price="600" data-image="okayy.png">
+          <img src="okayy.png" alt="DATE Obsession Body Spray">
+          <h3>DATE Obsession Body Spray</h3>
+          <br>
+          <p>Price: 600 Rs</p>
+          <br>
+          <p>Experience DATE Obsession Body Spray, a fragrance that blends sophistication with irresistible allure. This body spray captivates with its lasting freshness and a subtle hint of mystery, making it the ideal choice for every occasion.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="31" data-name="Lomani Amitabh B. Deodorant Spray" data-price="915" data-image="WhatsApp Image 2024-07-23 at 4.41.37 AM.jpeg">
+          <img src="WhatsApp Image 2024-07-23 at 4.41.37 AM.jpeg" alt="Lomani Amitabh B. Deodorant Spray">
+          <h3>Lomani Amitabh B. Deodorant Spray</h3>
+          <br>
+          <p>Price: 915 Rs</p>
+          <br>
+          <p>Introducing Lomani Amitabh B. Deodorant Spray: a sophisticated blend of freshness and charisma. Designed for the modern man, it offers long-lasting protection with a captivating fragrance that exudes confidence.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="32" data-name="Chivalry OUD" data-price="1100" data-image="okayy.png">
+          <img src="okayy.png" alt="Chivalry OUD">
+          <h3>Chivalry OUD</h3>
+          <br>
+          <p>Price: 1100 Rs</p>
+          <br>
+          <p>Experience the timeless elegance of “Chivalry Oud,” a fragrance that embodies sophistication and luxury. This captivating scent opens with the rich and exotic aroma of oud, balanced perfectly with notes of spicy saffron and refreshing bergamot.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="33" data-name="Classic No.1 Paris Perfume" data-price="2790" data-image="nah.jpeg">
+          <img src="nah.jpeg" alt="Classic No.1 Paris Perfume">
+          <h3>Classic No.1 Paris Perfume</h3>
+          <br>
+          <p>Price: 2790 Rs</p>
+          <br>
+          <p>Vaporisateur natural spray with a sparkling floral fragrance that is formulated with bright citrus top notes, youthful floral middle tones and a woody base. “No. 1 Paris” is not just a perfume, but a symbol of grace and refinement, perfect for those who appreciate the finer things in life.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="34" data-name="MAYA Precious Red Women Perfume" data-price="1510" data-image="okayy.png">
+          <img src="okayy.png" alt="MAYA Precious Red Women Perfume">
+          <h3>MAYA Precious Red Women Perfume</h3>
+          <br>
+          <p>Price: 1510 Rs</p>
+          <br>
+          <p>Discover “MAYA Precious Red Women Perfume,” a captivating blend of fruity top notes, floral middle notes, and a warm base of vanilla and musk. Perfect for the confident, sophisticated woman, it leaves a lasting impression of elegance and allure.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="35" data-name="Ahsan Black Magnet Perfume" data-price="2000" data-image="black-magnet.jpg">
+          <img src="black-magnet.jpg" alt="Ahsan Black Magnet Perfume">
+          <h3>Ahsan Black Magnet Perfume</h3>
+          <br>
+          <p>Price: 2000 Rs</p>
+          <br>
+          <p>Discover the allure of Ahsan Black Magnet perfume, a captivating blend of oriental and woody notes that epitomizes masculine charm. Opening with a burst of freshness, this fragrance evolves into a rich, warm base, leaving a lasting impression of sophistication and allure.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="36" data-name="Speed Stick Roll-on Deodorant" data-price="350" data-image="images (1).jpeg">
+          <img src="images (1).jpeg" alt="Speed Stick Roll-on Deodorant">
+          <h3>Speed Stick Roll-on Deodorant</h3>
+          <br>
+          <p>Price: 350 Rs</p>
+          <br>
+          <p>Experience all-day freshness with Speed Stick Roll-On Deodorant. Our fast-drying formula provides reliable odor protection, keeping you confident wherever your day takes you. Perfect for active lifestyles, it offers long-lasting freshness with a clean, refreshing scent.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <!-- Add the remaining products in a similar way -->
+
+  </div>
+</div>
+
+</section>
+<br><br>
+<footer>
+  <div>
+      <span>Copyright © 2024 All Rights Reserved</span>
+  </div>
+</footer>
+
+<script>
+document.querySelector('.btn-checkout').addEventListener('click', () => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'CHECKOUT.html'; // Redirect to checkout page
+});
+   const cart = [];
+const cartContent = document.getElementById('cart-content');
+const cartTotal = document.getElementById('cart-total');
+const cartCount = document.getElementById('cart-count');
+
+function updateCart() {
+    cartContent.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.dataset.id = item.id;
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+            <span>${item.name} - ${item.price} Rs</span>
+            <input type="number" class="cart-item-quantity" value="${item.quantity}" min="1" 
+                   onchange="updateQuantity(${item.id}, this.value)">
+            <span> ${item.price * item.quantity} Rs</span>
+            <i class='bx bxs-trash' onclick="removeFromCart(${item.id})"></i>
+        `;
+        cartContent.appendChild(cartItem);
+        total += item.price * item.quantity;
+    });
+
+    cartTotal.textContent = `${total} Rs`;
+    cartCount.textContent = cart.length;
+}
+
+function addToCart(product) {
+    const existingItem = cart.find(item => item.id === product.id);
+
+    if (existingItem) {
+        existingItem.quantity += product.quantity;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            quantity: product.quantity,
+            image: product.image
+        });
+    }
+
+    updateCart();
+}
+
+function removeFromCart(id) {
+    const itemIndex = cart.findIndex(item => item.id === id);
+
+    if (itemIndex > -1) {
+        cart.splice(itemIndex, 1);
+        updateCart();
+    }
+}
+
+function updateQuantity(id, quantity) {
+    const item = cart.find(item => item.id === id);
+
+    if (item) {
+        item.quantity = parseInt(quantity) || 1;
+        updateCart();
+    }
+}
+
+function toggleCart() {
+    const cartModal = document.getElementById('cart-modal');
+    cartModal.style.display = cartModal.style.display === 'block' ? 'none' : 'block';
+}
+
+function closeCart() {
+    document.getElementById('cart-modal').style.display = 'none';
+}
+
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', () => {
+        const productElement = button.parentElement;
+        const product = {
+            id: parseInt(productElement.dataset.id),
+            name: productElement.dataset.name,
+            price: parseInt(productElement.dataset.price),
+            quantity: 1, // Default quantity is set to 1
+            image: productElement.dataset.image
+        };
+        addToCart(product);
+    });
+});
+</script>
+</body>
+</html>

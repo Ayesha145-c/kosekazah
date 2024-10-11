@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <!-- Fontawesome Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons/css/boxicons.min.css">
+    <link rel="stylesheet" href="css/style0.css">
+    <style>
+        body{
+            background: linear-gradient(#F8BBD0, #F7E7CE);
+        }
+    </style>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+      <img style="width: 70px;" src="قوس قزحLOGO.png" alt="">
+      <input type="checkbox" id="menu-toggler">
+      <label style="top: 100px;" for="menu-toggler" id="hamburger-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+              <path d="M0 0h24v24H0z" fill="none"/>
+              <path d="M3 18h18v-2H3v2zm0-5h18V11H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+      </label>
+      <ul class="all-links">
+          <li><a href="lolhaha.html">Home</a></li>
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+      </ul>
+      <!-- Cart Icon -->
+      <div id="cart-icon" onclick="toggleCart()">
+          <span id="cart-count">0</span>
+          <i class="bx bx-cart"></i>
+      </div>
+      <div class="cart-modal" id="cart-modal">
+          <div>
+              <h1 style="text-align: center;">Your Cart</h1>
+          </div>
+          <div class="cart-content" id="cart-content">
+              <!-- Cart items will be dynamically added here -->
+          </div>
+          <div class="cart-footer">
+              <span class="total">Total: <span id="cart-total">0 Rs</span></span>
+              <button class="btn-checkout">Checkout</button>
+              <button class="btn-close" onclick="closeCart()">Close</button>
+          </div>
+      </div>
+  </nav>
+</header>
+<br><br>
+<section>
+  <h1 style="text-align: center;">Lipsticks</h1>
+  <!-- Products -->
+  <div class="product-container">
+      <div class="product" data-id="12" data-name="F&B feel real Lipstick shade Bright red" data-price="200" data-image="c52889d3-c936-495c-9b51-592630187d96.jpeg">
+          <img src="c52889d3-c936-495c-9b51-592630187d96.jpeg" alt="F&B feel real Lipstick shade Bright red">
+          <h3>F&B feel real Lipstick shade Bright red</h3>
+          <br>
+          <p>Price: 200 Rs</p>
+          <br>
+          <p> 
+            This lipstick delivers intense color with a creamy, moisturizing formula that ensures comfortable wear. It offers long-lasting coverage and a radiant finish.
+          </p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      
+      <div class="product" data-id="13" data-name="F&B feel real Lipstick shade Maroon" data-price="200" data-image="bfff3c4f-ac95-483d-a226-74a732540883.jpeg">
+          <img src="bfff3c4f-ac95-483d-a226-74a732540883.jpeg" alt="F&B feel real Lipstick shade Maroon">
+          <h3>F&B feel real Lipstick shade Maroon</h3>
+          <br>
+          <p>Price: 200 Rs</p>
+          <br>
+          <p>This lipstick offers rich color and a smooth, creamy texture that glides effortlessly. Perfect for adding a touch of elegance and allure to any look.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="20" data-name="Soft Lip Glaze LipGloss" data-price="250" data-image="okayy.png">
+          <img src="okayy.png" alt="Soft Lip Glaze LipGloss">
+          <h3>Soft Lip Glaze LipGloss</h3>
+          <br>
+          <p>Price: 250 Rs</p>
+          <br>
+          <p>Experience the perfect blend of hydration and shine with our Soft Lip Glaze Lip Gloss. This gloss provides a smooth, non-sticky finish while keeping your lips soft and moisturized all day long.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="27" data-name="MMCQ Crown Lipstick" data-price="350" data-image="dcd4926b-6ce6-44d0-8d2f-d3439155e8b7.jpeg">
+          <img src="dcd4926b-6ce6-44d0-8d2f-d3439155e8b7.jpeg" alt="MMCQ Crown Lipstick">
+          <h3>MMCQ Crown Lipstick</h3>
+          <br>
+          <p>Price: 350 Rs</p>
+          <br>
+          <p>Introducing MMCQ Crown Lipstick, a regal choice for luxurious lips. This lipstick combines rich color with a smooth, velvety texture that glides on effortlessly.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+</section>
+<br><br>
+<footer>
+  <div>
+      <span>Copyright © 2024 All Rights Reserved</span>
+  </div>
+</footer>
+
+<script>
+    document.querySelector('.btn-checkout').addEventListener('click', () => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'CHECKOUT.html'; // Redirect to checkout page
+});
+   const cart = [];
+const cartContent = document.getElementById('cart-content');
+const cartTotal = document.getElementById('cart-total');
+const cartCount = document.getElementById('cart-count');
+
+function updateCart() {
+    cartContent.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.dataset.id = item.id;
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+            <span>${item.name} - ${item.price} Rs</span>
+            <input type="number" class="cart-item-quantity" value="${item.quantity}" min="1" 
+                   onchange="updateQuantity(${item.id}, this.value)">
+            <span> ${item.price * item.quantity} Rs</span>
+            <i class='bx bxs-trash' onclick="removeFromCart(${item.id})"></i>
+        `;
+        cartContent.appendChild(cartItem);
+        total += item.price * item.quantity;
+    });
+
+    cartTotal.textContent = `${total} Rs`;
+    cartCount.textContent = cart.length;
+}
+
+function addToCart(product) {
+    const existingItem = cart.find(item => item.id === product.id);
+
+    if (existingItem) {
+        existingItem.quantity += product.quantity;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            quantity: product.quantity,
+            image: product.image
+        });
+    }
+
+    updateCart();
+}
+
+function removeFromCart(id) {
+    const itemIndex = cart.findIndex(item => item.id === id);
+
+    if (itemIndex > -1) {
+        cart.splice(itemIndex, 1);
+        updateCart();
+    }
+}
+
+function updateQuantity(id, quantity) {
+    const item = cart.find(item => item.id === id);
+
+    if (item) {
+        item.quantity = parseInt(quantity) || 1;
+        updateCart();
+    }
+}
+
+function toggleCart() {
+    const cartModal = document.getElementById('cart-modal');
+    cartModal.style.display = cartModal.style.display === 'block' ? 'none' : 'block';
+}
+
+function closeCart() {
+    document.getElementById('cart-modal').style.display = 'none';
+}
+
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', () => {
+        const productElement = button.parentElement;
+        const product = {
+            id: parseInt(productElement.dataset.id),
+            name: productElement.dataset.name,
+            price: parseInt(productElement.dataset.price),
+            quantity: 1, // Default quantity is set to 1
+            image: productElement.dataset.image
+        };
+        addToCart(product);
+    });
+});
+</script>
+</body>
+</html>

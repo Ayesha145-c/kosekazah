@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons/css/boxicons.min.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(#F8BBD0, #F7E7CE);
+            font-family: Arial, sans-serif;
+        }
+        .checkout-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .checkout-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .checkout-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        .checkout-item-details {
+            flex: 1;
+        }
+        .checkout-item span {
+            display: block;
+        }
+        .total {
+            text-align: right;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        .btn {
+            background: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+            text-align: center;
+            display: block;
+            margin: 20px auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <h1>Checkout</h1>
+        <form id="checkout-form" action="process-payment.php" method="post">
+            <div id="checkout-items"></div>
+            <div class="total">Total: <span id="checkout-total">0 Rs</span></div>
+
+            <h2>Shipping Information</h2>
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="Street Address" required>
+            </div>
+            <div class="form-group">
+                <label for="phone-number">Phone Number</label>
+                <input type="tel" id="phone-number" name="phone-number" placeholder="Phone Number" required>
+            </div>
+
+            <h2>Payment Information</h2>
+            <div class="form-group">
+                <label for="payment-method">Payment Method</label>
+                <select id="payment-method" name="payment-method">
+                    <option value="cash-on-delivery">Cash on Delivery</option>
+                    <option value="credit-card">Credit Card</option>
+                </select>
+            </div>
+
+            <div id="payment-details" style="display: none;">
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="Card Number">
+                </div>
+                <div class="form-group">
+                    <label for="card-expiry">Expiry Date</label>
+                    <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY">
+                </div>
+                <div class="form-group">
+                    <label for="card-cvc">CVC</label>
+                    <input type="text" id="card-cvc" name="card-cvc" placeholder="CVC">
+                </div>
+            </div>
+
+            <button class="btn" type="button" id="complete-purchase">Complete Purchase</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize EmailJS
+            emailjs.init('YOUR_EMAILJS_USER_ID'); // Replace with your EmailJS user ID
+
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const checkoutItems = document.getElementById('checkout-items');
+            const checkoutTotal = document.getElementById('checkout-total');
+            const paymentMethod = document.getElementById('payment-method');
+            const paymentDetails = document.getElementById('payment-details');
+            const completePurchaseBtn = document.getElementById('complete-purchase');
+
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('checkout-item');
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="checkout-item-details">
+                        <span>${item.name}</span>
+                        <span>Price: ${item.price} Rs</span>
+                        <span>Quantity: ${item.quantity}</span>
+                        <span>Total: ${item.price * item.quantity} Rs</span>
+                    </div>
+                `;
+                checkoutItems.appendChild(itemDiv);
+                total += item.price * item.quantity;
+            });
+
+            checkoutTotal.textContent = `${total} Rs`;
+
+            paymentMethod.addEventListener('change', (event) => {
+                if (event.target.value === 'credit-card') {
+                    paymentDetails.style.display = 'block';
+                } else {
+                    paymentDetails.style.display = 'none';
+                }
+            });
+
+            completePurchaseBtn.addEventListener('click', () => {
+                const firstName = document.getElementById('first-name').value;
+                const lastName = document.getElementById('last-name').value;
+                const address = document.getElementById('address').value;
+                const phoneNumber = document.getElementById('phone-number').value;
+                const paymentMethodValue = paymentMethod.value;
+                const cardNumber = document.getElementById('card-number').value;
+                const cardExpiry = document.getElementById('card-expiry').value;
+                const cardCvc = document.getElementById('card-cvc').value;
+
+                if (!firstName || !lastName || !address || !phoneNumber || (paymentMethodValue === 'credit-card' && (!cardNumber || !cardExpiry || !cardCvc))) {
+                    alert('Please fill out all required fields.');
+                    return;
+                }
+
+                const orderDetails = `
+                    Name: ${firstName} ${lastName}\n
+                    Address: ${address}\n
+                    Phone Number: ${phoneNumber}\n
+                    Payment Method: ${paymentMethodValue}\n
+                    ${paymentMethodValue === 'credit-card' ? `
+                        Card Number: ${cardNumber}\n
+                        Expiry Date: ${cardExpiry}\n
+                        CVC: ${cardCvc}\n
+                    ` : ''}
+                    \nCart Items:\n
+                    ${cart.map(item => `${item.name} - ${item.quantity} x ${item.price} Rs`).join('\n')}
+                `;
+
+                emailjs.send('service_kf7x6ic', 'YOUR_TEMPLATE_ID', {
+                    from_name: `${firstName} ${lastName}`,
+                    from_email: 'kosekazah9@gmail.com', // Your email or the recipient's email
+                    message: orderDetails
+                }).then((response) => {
+                    alert('Thank you for your purchase! Your order has been sent.');
+                    localStorage.removeItem('cart');
+                    window.location.href = 'kosekazah.html'; // Redirect to success page
+                }).catch((error) => {
+                    alert('There was an error sending your order. Please try again.');
+                    console.error('Error sending email:', error);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

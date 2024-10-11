@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <!-- Fontawesome Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons/css/boxicons.min.css">
+    <link rel="stylesheet" href="css/style0.css">
+    <style>
+        body{
+            background: linear-gradient(#F8BBD0, #F7E7CE);
+        }
+    </style>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+      <img style="width: 70px;" src="قوس قزحLOGO.png" alt="">
+      <input type="checkbox" id="menu-toggler">
+      <label style="top: 100px;" for="menu-toggler" id="hamburger-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+              <path d="M0 0h24v24H0z" fill="none"/>
+              <path d="M3 18h18v-2H3v2zm0-5h18V11H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+      </label>
+      <ul class="all-links">
+          <li><a href="lolhaha.html">Home</a></li>
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+      </ul>
+      <!-- Cart Icon -->
+      <div id="cart-icon" onclick="toggleCart()">
+          <span id="cart-count">0</span>
+          <i class="bx bx-cart"></i>
+      </div>
+      <div class="cart-modal" id="cart-modal">
+          <div>
+              <h1 style="text-align: center;">Your Cart</h1>
+          </div>
+          <div class="cart-content" id="cart-content">
+              <!-- Cart items will be dynamically added here -->
+          </div>
+          <div class="cart-footer">
+              <span class="total">Total: <span id="cart-total">0 Rs</span></span>
+              <button class="btn-checkout">Checkout</button>
+              <button class="btn-close" onclick="closeCart()">Close</button>
+          </div>
+      </div>
+  </nav>
+</header>
+<br><br>
+<section>
+  <h1 style="text-align: center;">Face Items</h1>
+  <!-- Products -->
+  <div class="product-container">
+      <div class="product" data-id="3" data-name="Blush Brush" data-price="240" data-image="d5f28877-88af-4667-a9d5-265499b75efb.jpeg">
+          <img src="d5f28877-88af-4667-a9d5-265499b75efb.jpeg" alt="Blush Brush">
+          <h3>Blush Brush</h3>
+          <br>
+          <p>Price: 240 Rs</p>
+          <br>
+          <p> This brush features soft, fluffy bristles that evenly distribute blush onto the apples of your cheeks. Perfect for blending seamlessly and building color intensity, it ensures a smooth and flawless application every time.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      
+      <div class="product" data-id="4" data-name="Highlighter Brush" data-price="300" data-image="highlighter.jpeg">
+          <img src="highlighter.jpeg" alt="Highlighter Brush">
+          <h3>Highlighter Brush</h3>
+          <br>
+          <p>Price: 300 Rs</p>
+          <br>
+          <p>Introducing the Highlighter Brush, your essential tool for achieving a luminous glow. This brush is expertly designed with soft, synthetic bristles that delicately sweep highlighter onto the high points of your face.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="9" data-name="LAREEN Marry Me Contour Palette" data-price="700" data-image="d5ab0a87-7f13-49ba-ae87-63206c31ef69.jpeg">
+          <img src="d5ab0a87-7f13-49ba-ae87-63206c31ef69.jpeg" alt="LAREEN Marry Me Contour Palette">
+          <h3>LAREEN Marry Me Contour Palette</h3>
+          <br>
+          <p>Price: 700 Rs</p>
+          <br>
+          <p>Introducing the Lareen Marry Me Contour Powder, a must-have for sculpting and defining your features with elegance. This contour powder blends seamlessly to create natural shadows and highlights, enhancing your facial structure. </p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="14" data-name="LAREEN Foundation shade 12 beige" data-price="1200" data-image="72173f9f-af7b-4b86-a60b-36bfaebd8a89.jpeg">
+          <img src="72173f9f-af7b-4b86-a60b-36bfaebd8a89.jpeg" alt="LAREEN Foundation shade 12 beige">
+          <h3>LAREEN Foundation shade 12 beige</h3>
+          <br>
+          <p>Price: 1200 Rs</p>
+          <br>
+          <p>Discover Lareen Smoothing Fluid Foundation in Shade 12 Beige. This foundation provides a smooth, flawless finish with a lightweight feel. Perfect for achieving a natural look, it blends effortlessly for comfortable, long-lasting wear.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      
+      <div class="product" data-id="15" data-name="Forever 52 HD foundation" data-price="2000" data-image="foverver.jpeg">
+          <img src="foverver.jpeg" alt="Forever 52 HD foundation">
+          <h3>Forever 52 HD foundation</h3>
+          <br>
+          <p>Price: 2000 Rs</p>
+          <br>
+          <p>Discover FOREVER 52 Professional HD Liquid Foundation, your go-to for flawless, high-definition coverage. This foundation delivers a smooth, natural finish that lasts all day, perfect for achieving a professional look.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+     
+      <div class="product" data-id="15" data-name="Loreal Paris True Match Foundation Shade 2R/2C Rose Vanilla" data-price="4000" data-image="e744bfad-6d4d-4677-88c2-8a9a5a198216.jpeg">
+          <img src="e744bfad-6d4d-4677-88c2-8a9a5a198216.jpeg" alt="Loreal Paris True Match Foundation Shade 2R/2C Rose Vanilla">
+          <h3>Loreal Paris True Match Foundation Shade 2R/2C Rose Vanilla</h3>
+          <br>
+          <p>Price: 4000 Rs</p>
+          <br>
+          <p>Discover L’OREAL Paris True Match Liquid Foundation in Shade 2R/2C. This lightweight formula blends seamlessly to match your skin tone, providing natural coverage with a radiant finish. Perfect for achieving a flawless complexion, it offers a comfortable wear that lasts all day.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="16" data-name="Maybelline New York 24H Foundation Shade 110 Porcelain" data-price="3900" data-image="superstay full coverage 110 1-550x550.jpg">
+          <img src="superstay full coverage 110 1-550x550.jpg" alt="Maybelline New York 24H Foundation Shade 110 Porcelain">
+          <h3>Maybelline New York 24H Foundation Shade 110 Porcelain</h3>
+          <br>
+          <p>Price: 3900 Rs</p>
+          <br>
+          <p>This foundation offers full coverage with a lightweight feel, making it suitable for long wear up to 24 hours. It aims to provide a matte finish that resists smudging, fading, and transferring, giving you a fresh, flawless look throughout the day.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="17" data-name="Maybelline Dream Radiant Liquid Foundation Shade 110 Porcelain" data-price="3900" data-image="a242cd61-592d-4af9-93de-b4c7d74cbb00.jpeg">
+          <img src="a242cd61-592d-4af9-93de-b4c7d74cbb00.jpeg" alt="Maybelline Dream Radiant Liquid Foundation Shade 110 Porcelain">
+          <h3>Maybelline Dream Radiant Liquid Foundation Shade 110 Porcelain</h3>
+          <br>
+          <p>Price: 3900 Rs</p>
+          <br>
+          <p>Introducing Maybelline New York Dream Radiant Liquid Foundation in Shade 110 Porcelain Porcelaine. This foundation provides a radiant finish with medium coverage, perfect for a natural and luminous complexion.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="18" data-name="The Ordinary Caffeine Solution 5% + EGCG" data-price="4000" data-image="okayyyy.webp">
+          <img src="okayyyy.webp" alt="The Ordinary Caffeine Solution 5% + EGCG">
+          <h3>The Ordinary Caffeine Solution 5% + EGCG</h3>
+          <br>
+          <p>Price: 4000 Rs</p>
+          <br>
+          <p>Introducing The Ordinary Caffeine Solution 5% + EGCG. This lightweight serum targets puffiness and dark circles around the eyes with a high concentration of caffeine and green tea extracts. Refreshing upon application, it helps brighten the eye area for a more youthful appearance.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="26" data-name="MN Compact Powder" data-price="700" data-image="187a73d2-1298-492a-b9d6-e4dde2a2598a.jpeg">
+          <img src="187a73d2-1298-492a-b9d6-e4dde2a2598a.jpeg" alt="MN Compact Powder">
+          <h3>MN Compact Powder</h3>
+          <br>
+          <p>Price: 700 Rs</p>
+          <br>
+          <p>Introducing MN Sun Protection Compact Powder, your essential companion for sun-kissed protection and a flawless finish. This compact powder provides effective sun protection while offering a smooth, matte look that lasts throughout the day.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="29" data-name="Shifa Arq-e-Gulaab" data-price="300" data-image="okayy.png">
+          <img src="okayy.png" alt="Shifa Arq-e-Gulaab">
+          <h3>Shifa Arq-e-Gulaab</h3>
+          <br>
+          <p>Price: 300 Rs</p>
+          <br>
+          <p>Shifa Arq-e-Gulab is pure rose water renowned for its soothing, hydrating properties. Perfect for refreshing your skin or enhancing beauty routines with its natural, gentle fragrance.</p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      <div class="product" data-id="37" data-name="5pc Makeup Brushes" data-price="700" data-image="5pc.jpeg">
+          <img src="5pc.jpeg" alt="5pc Makeup Brushes">
+          <h3>5pc Makeup Brushes</h3>
+          <br>
+          <p>Price: 700 Rs</p>
+          <br>
+          <p>This kit has essential brushes for every step of your routine, including:
+            <br>
+            1. Blush Brush
+            <br>
+            2. Eyeshadow brush
+            <br>
+            3. Eyebrow brush
+            <br>
+            4. lipstick brush
+            <br>
+            5. concealer brush
+        </p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+</div>
+
+</section>
+<br><br>
+<footer>
+  <div>
+      <span>Copyright © 2024 All Rights Reserved</span>
+  </div>
+</footer>
+
+<script>
+   const cart = [];
+const cartContent = document.getElementById('cart-content');
+const cartTotal = document.getElementById('cart-total');
+const cartCount = document.getElementById('cart-count');
+
+function updateCart() {
+    cartContent.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.dataset.id = item.id;
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+            <span>${item.name} - ${item.price} Rs</span>
+            <input type="number" class="cart-item-quantity" value="${item.quantity}" min="1" 
+                   onchange="updateQuantity(${item.id}, this.value)">
+            <span> ${item.price * item.quantity} Rs</span>
+            <i class='bx bxs-trash' onclick="removeFromCart(${item.id})"></i>
+        `;
+        cartContent.appendChild(cartItem);
+        total += item.price * item.quantity;
+    });
+
+    cartTotal.textContent = `${total} Rs`;
+    cartCount.textContent = cart.length;
+}
+
+function addToCart(product) {
+    const existingItem = cart.find(item => item.id === product.id);
+
+    if (existingItem) {
+        existingItem.quantity += product.quantity;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            quantity: product.quantity,
+            image: product.image
+        });
+    }
+
+    updateCart();
+}
+
+function removeFromCart(id) {
+    const itemIndex = cart.findIndex(item => item.id === id);
+
+    if (itemIndex > -1) {
+        cart.splice(itemIndex, 1);
+        updateCart();
+    }
+}
+
+function updateQuantity(id, quantity) {
+    const item = cart.find(item => item.id === id);
+
+    if (item) {
+        item.quantity = parseInt(quantity) || 1;
+        updateCart();
+    }
+}
+
+function toggleCart() {
+    const cartModal = document.getElementById('cart-modal');
+    cartModal.style.display = cartModal.style.display === 'block' ? 'none' : 'block';
+}
+
+function closeCart() {
+    document.getElementById('cart-modal').style.display = 'none';
+}
+
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', () => {
+        const productElement = button.parentElement;
+        const product = {
+            id: parseInt(productElement.dataset.id),
+            name: productElement.dataset.name,
+            price: parseInt(productElement.dataset.price),
+            quantity: 1, // Default quantity is set to 1
+            image: productElement.dataset.image
+        };
+        addToCart(product);
+    });
+});
+document.querySelector('.btn-checkout').addEventListener('click', () => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'CHECKOUT.html'; // Redirect to checkout page
+});
+</script>
+</body>
+</html>

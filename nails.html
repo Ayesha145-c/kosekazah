@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <!-- Fontawesome Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons/css/boxicons.min.css">
+    <link rel="stylesheet" href="css/style0.css">
+    <style>
+        body{
+            background: linear-gradient(#F8BBD0, #F7E7CE);
+        }
+    </style>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+      <img style="width: 70px;" src="قوس قزحLOGO.png" alt="">
+      <input type="checkbox" id="menu-toggler">
+      <label style="top: 100px;" for="menu-toggler" id="hamburger-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+              <path d="M0 0h24v24H0z" fill="none"/>
+              <path d="M3 18h18v-2H3v2zm0-5h18V11H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+      </label>
+      <ul class="all-links">
+          <li><a href="lolhaha.html">Home</a></li>
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+      </ul>
+      <!-- Cart Icon -->
+      <div id="cart-icon" onclick="toggleCart()">
+          <span id="cart-count">0</span>
+          <i class="bx bx-cart"></i>
+      </div>
+      <div class="cart-modal" id="cart-modal">
+          <div>
+              <h1 style="text-align: center;">Your Cart</h1>
+          </div>
+          <div class="cart-content" id="cart-content">
+              <!-- Cart items will be dynamically added here -->
+          </div>
+          <div class="cart-footer">
+              <span class="total">Total: <span id="cart-total">0 Rs</span></span>
+              <button class="btn-checkout">Checkout</button>
+              <button class="btn-close" onclick="closeCart()">Close</button>
+          </div>
+      </div>
+  </nav>
+</header>
+<br><br>
+<section>
+  <h1 style="text-align: center;">Nails</h1>
+  <br>
+  <!-- Products -->
+  <div class="product-container">
+      <div class="product" data-id="5" data-name="Artificial Nails" data-price="300" data-image="8083edfa-acef-4a15-b33e-ca313cd3a70c.jpeg">
+          <img src="8083edfa-acef-4a15-b33e-ca313cd3a70c.jpeg" alt="Artificial Nails">
+          <h3>Artificial Nails</h3>
+          <br>
+          <p>Price: 300 Rs</p>
+          <br>
+          <p>These artificial nails are crafted from high-quality materials to provide durability and a natural look. Perfect for achieving salon-quality manicures at home, they come in a variety of shapes, lengths, and designs to suit your style.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product" data-id="10" data-name="Fit Me Peel-off Nail Polish pack of 24" data-price="2800" data-image="e2ff369d-bcce-448c-b5b9-741bd0efc520.jpeg">
+          <img src="e2ff369d-bcce-448c-b5b9-741bd0efc520.jpeg" alt="Fit Me Peel-off Nail Polish pack of 24">
+          <h3>Fit Me Peel-off Nail Polish pack of 24</h3>
+          <br>
+          <p>Price: 2800 Rs</p>
+          <br>
+          <p>The Fit Me Peel-Off Nail Polish pack of 24 offers a versatile collection of vibrant shades that are easy to apply and remove. Perfect for quick, hassle-free manicures, this set ensures a mess-free experience with its peel-off formula.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+      
+      <div class="product" data-id="11" data-name="Enjoy Color Matte Nail-Polish Pack of 24" data-price="3200" data-image="okayy.png">
+          <img src="okayy.png" alt="Enjoy Color Matte Nail-Polish Pack of 24">
+          <h3>Enjoy Color Matte Nail-Polish Pack of 24</h3>
+          <br>
+          <p>Price: 3200 Rs</p>
+          <br>
+          <p> This pack features an array of matte nail polishes in various shades, from bold primaries to soft neutrals. Perfect for creating versatile and trendy nail looks, each polish offers a smooth, matte finish that lasts.</p>
+          <button class="add-to-cart">Add to Cart</button>
+      </div>
+  </div>
+</section>
+
+<script>
+document.querySelector('.btn-checkout').addEventListener('click', () => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'CHECKOUT.html'; // Redirect to checkout page
+});
+   const cart = [];
+const cartContent = document.getElementById('cart-content');
+const cartTotal = document.getElementById('cart-total');
+const cartCount = document.getElementById('cart-count');
+
+function updateCart() {
+    cartContent.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.dataset.id = item.id;
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+            <span>${item.name} - ${item.price} Rs</span>
+            <input type="number" class="cart-item-quantity" value="${item.quantity}" min="1" 
+                   onchange="updateQuantity(${item.id}, this.value)">
+            <span> ${item.price * item.quantity} Rs</span>
+            <i class='bx bxs-trash' onclick="removeFromCart(${item.id})"></i>
+        `;
+        cartContent.appendChild(cartItem);
+        total += item.price * item.quantity;
+    });
+
+    cartTotal.textContent = `${total} Rs`;
+    cartCount.textContent = cart.length;
+}
+
+function addToCart(product) {
+    const existingItem = cart.find(item => item.id === product.id);
+
+    if (existingItem) {
+        existingItem.quantity += product.quantity;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            quantity: product.quantity,
+            image: product.image
+        });
+    }
+
+    updateCart();
+}
+
+function removeFromCart(id) {
+    const itemIndex = cart.findIndex(item => item.id === id);
+
+    if (itemIndex > -1) {
+        cart.splice(itemIndex, 1);
+        updateCart();
+    }
+}
+
+function updateQuantity(id, quantity) {
+    const item = cart.find(item => item.id === id);
+
+    if (item) {
+        item.quantity = parseInt(quantity) || 1;
+        updateCart();
+    }
+}
+
+function toggleCart() {
+    const cartModal = document.getElementById('cart-modal');
+    cartModal.style.display = cartModal.style.display === 'block' ? 'none' : 'block';
+}
+
+function closeCart() {
+    document.getElementById('cart-modal').style.display = 'none';
+}
+
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', () => {
+        const productElement = button.parentElement;
+        const product = {
+            id: parseInt(productElement.dataset.id),
+            name: productElement.dataset.name,
+            price: parseInt(productElement.dataset.price),
+            quantity: 1, // Default quantity is set to 1
+            image: productElement.dataset.image
+        };
+        addToCart(product);
+    });
+});
+</script>
+</body>
+</html>
